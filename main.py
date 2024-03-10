@@ -66,6 +66,10 @@ def main():
                 move = ask_move(game)
                 game.make_move(move[0], move[1])
 
+                # Check if there is a winner or a tie
+                if game.check_winner() or game.check_tie():
+                    break
+
                 # Robot move
                 game.set_player('O')
                 while True:
@@ -88,6 +92,7 @@ def main():
                 # Robot move
                 game.set_player('X')
                 while True:
+
                     row = rd.randint(0, 2)
                     col = rd.randint(0, 2)
                     if game.board[row][col] is None:
